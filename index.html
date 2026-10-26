@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5f7ff">
+  <meta name="description" content="مهامي، المنظم الدراسي الذكي لطلاب المرحلة الثانوية في نظام المسارات.">
+  <title>مهامي | المنظم الدراسي الذكي</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://unpkg.com/lucide@0.468.0/dist/umd/lucide.min.js" defer></script>
+  <script src="config.js" defer></script>
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="مهامي - الصفحة الرئيسية">
+        <span class="brand-mark"><i data-lucide="graduation-cap"></i></span>
+        <span><strong>مهامي</strong><small>المنظّم الدراسي الذكي</small></span>
+      </a>
+      <div class="selection-controls" aria-label="اختياراتك الدراسية">
+        <label class="select-wrap"><span>الصف</span><select id="gradeSelect" aria-label="الصف الدراسي">
+          <option value="2">الثاني الثانوي</option><option value="3">الثالث الثانوي</option>
+        </select></label>
+        <label class="select-wrap"><span>الشعبة</span><select id="sectionSelect" aria-label="الشعبة"></select></label>
+        <label class="select-wrap track-select"><span>المسار</span><select id="trackSelect" aria-label="المسار الدراسي"></select></label>
+      </div>
+      <div class="top-actions">
+        <div class="date-display"><span id="todayGregorian">—</span><span id="todayHijri">—</span></div>
+        <button class="icon-button" id="themeButton" type="button" aria-label="تفعيل الوضع الليلي" title="تغيير المظهر"><i data-lucide="moon"></i></button>
+        <button class="icon-button refresh-button" id="refreshButton" type="button" aria-label="تحديث المهام" title="تحديث المهام"><i data-lucide="refresh-cw"></i></button>
+      </div>
+    </header>
+
+    <main>
+      <section class="welcome-row">
+        <div>
+          <p class="eyebrow">مساحتك الدراسية</p>
+          <h1>كل مهامك، <span>بترتيب أذكى.</span></h1>
+          <p class="welcome-copy">تابع متطلباتك الدراسية ومواعيدك القادمة في مكان واحد.</p>
+        </div>
+        <div class="sync-state" id="syncState" role="status" aria-live="polite">
+          <span class="status-dot"></span><span id="syncMessage">جارٍ تجهيز مهامك…</span>
+          <small id="lastUpdated"></small>
+        </div>
+      </section>
+
+      <div class="notice-banner hidden" id="noticeBanner" role="status" aria-live="polite"></div>
+
+      <section class="stats-grid" aria-label="ملخص المهام">
+        <article class="stat-card stat-purple"><span class="stat-icon"><i data-lucide="layers"></i></span><div><p>إجمالي المهام القادمة</p><strong id="upcomingCount">—</strong><small>ضمن اختياراتك الحالية</small></div></article>
+        <article class="stat-card stat-blue"><span class="stat-icon"><i data-lucide="clipboard-check"></i></span><div><p>الاختبارات القادمة</p><strong id="examCount">—</strong><small>اختبارات قصيرة وشهرية ونهائية</small></div></article>
+        <article class="stat-card stat-orange"><span class="stat-icon"><i data-lucide="clock-3"></i></span><div><p>خلال ٤٨ ساعة</p><strong id="soonCount">—</strong><small>حان وقت التركيز عليها</small></div></article>
+        <article class="stat-card stat-red"><span class="stat-icon"><i data-lucide="alarm-clock"></i></span><div><p>تجاوزت موعدها</p><strong id="overdueCount">—</strong><small>راجع المطلوب منك</small></div></article>
+      </section>
+
+      <section class="spotlight-section" aria-labelledby="spotlightHeading">
+        <div class="section-heading"><div><p class="eyebrow">لا يفوتك الموعد</p><h2 id="spotlightHeading">أقرب موعد</h2></div></div>
+        <div class="spotlight-card" id="spotlight">
+          <div class="loading-state"><span class="spinner"></span><span>نرتّب لك أقرب موعد…</span></div>
+        </div>
+      </section>
+
+      <section class="progress-section" aria-label="تقدم الإنجاز">
+        <div class="progress-copy"><div><span class="progress-icon"><i data-lucide="target"></i></span><strong>إنجازك الشخصي</strong><small id="progressText">يتم حفظ إنجازك على هذا الجهاز فقط</small></div><strong id="progressPercent">٠٪</strong></div>
+        <div class="progress-track" role="progressbar" aria-label="نسبة إنجاز المهام" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><span id="progressFill"></span></div>
+      </section>
+
+      <section class="week-section" aria-labelledby="weekHeading">
+        <div class="section-heading"><div><p class="eyebrow">خطّط لأيامك</p><h2 id="weekHeading">هذا الأسبوع</h2></div><span class="subtle-label" id="weekLabel"></span></div>
+        <div class="week-list" id="weekList"></div>
+      </section>
+
+      <section class="tasks-section" aria-labelledby="tasksHeading">
+        <div class="tasks-title-row">
+          <div class="section-heading"><div><p class="eyebrow">كل ما تحتاج متابعته</p><h2 id="tasksHeading">المهام الدراسية</h2></div></div>
+          <div class="view-switch" role="group" aria-label="طريقة عرض المهام">
+            <button class="view-button active" id="cardsViewButton" type="button" aria-pressed="true"><i data-lucide="layout-grid"></i><span>بطاقات</span></button>
+            <button class="view-button" id="listViewButton" type="button" aria-pressed="false"><i data-lucide="list"></i><span>قائمة</span></button>
+          </div>
+        </div>
+        <div class="filters-panel">
+          <label class="search-field"><i data-lucide="search"></i><input id="searchInput" type="search" placeholder="ابحث عن مهمة أو مادة…" autocomplete="off" aria-label="بحث في المهام"></label>
+          <label class="filter-field"><span>المادة</span><select id="subjectFilter"><option value="">كل المواد</option></select></label>
+          <label class="filter-field"><span>نوع المتطلب</span><select id="typeFilter"><option value="">كل الأنواع</option></select></label>
+          <label class="filter-field"><span>الأولوية</span><select id="priorityFilter"><option value="">كل الأولويات</option><option value="high">عالية</option><option value="medium">متوسطة</option><option value="low">منخفضة</option></select></label>
+          <label class="filter-field"><span>الموعد</span><select id="dueFilter"><option value="">كل المواعيد</option><option value="upcoming">قادمة</option><option value="soon">خلال ٤٨ ساعة</option><option value="overdue">متأخرة</option></select></label>
+          <label class="filter-field date-filter"><span>من تاريخ</span><input id="dateFilter" type="date" aria-label="تصفية المهام من تاريخ"></label>
+        </div>
+        <div class="results-summary"><span id="resultCount">—</span><button class="clear-filters hidden" id="clearFilters" type="button">مسح التصفية</button></div>
+        <div class="tasks-grid" id="tasksContainer" aria-live="polite">
+          <div class="loading-state"><span class="spinner"></span><span>جارٍ تحميل المهام…</span></div>
+        </div>
+      </section>
+    </main>
+    <footer class="footer"><span class="footer-brand">مهامي <span>•</span> المنظّم الدراسي الذكي</span><span>بيانات المهام للقراءة فقط، وإنجازك الشخصي محفوظ على جهازك.</span></footer>
+  </div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>

@@ -1,0 +1,14 @@
+{
+  "questions": [
+    {"id":"math-01","subject":"الرياضيات","type":"multiple","question":"ما قيمة ٣² + ٤²؟","options":["٧","١٢","٢٥","٤٩"],"answer":2,"explanation":"٣² = ٩ و٤² = ١٦، ومجموعهما ٢٥."},
+    {"id":"math-02","subject":"الرياضيات","type":"truefalse","question":"كل عدد أولي أكبر من ٢ هو عدد فردي.","answer":true,"explanation":"العدد الزوجي الأكبر من ٢ يقبل القسمة على ٢، لذلك لا يكون أوليًا."},
+    {"id":"tech-01","subject":"التقنية الرقمية","type":"multiple","question":"أي امتداد يُستخدم غالبًا لملفات صفحات الويب؟","options":[".html",".mp3",".xlsx",".zip"],"answer":0,"explanation":"HTML هي لغة بناء محتوى صفحات الويب."},
+    {"id":"tech-02","subject":"التقنية الرقمية","type":"order","question":"رتّب خطوات فتح موقع: اكتب أرقام الخطوات بالترتيب الصحيح.","items":["عرض صفحة الموقع","إرسال طلب إلى الخادم","كتابة عنوان الموقع"],"answer":[2,1,0],"explanation":"يكتب المستخدم العنوان، ثم يرسل المتصفح طلبًا، ثم يعرض الصفحة."},
+    {"id":"physics-01","subject":"الفيزياء","type":"multiple","question":"ما وحدة قياس القوة في النظام الدولي؟","options":["الجول","النيوتن","الواط","الأمبير"],"answer":1,"explanation":"تقاس القوة بوحدة النيوتن."},
+    {"id":"chem-01","subject":"الكيمياء","type":"truefalse","question":"الرقم الهيدروجيني الأقل من ٧ يدل غالبًا على محلول حمضي.","answer":true,"explanation":"المحاليل الحمضية يكون رقمها الهيدروجيني أقل من ٧."},
+    {"id":"bio-01","subject":"الأحياء","type":"multiple","question":"ما العضية التي تقوم بعملية البناء الضوئي في الخلية النباتية؟","options":["النواة","الميتوكوندريا","البلاستيدة الخضراء","جهاز جولجي"],"answer":2,"explanation":"تحتوي البلاستيدات الخضراء على الكلوروفيل وتتم فيها عملية البناء الضوئي."},
+    {"id":"arabic-01","subject":"اللغة العربية","type":"logic","question":"كلمة «المعلمون» في جملة «حضر المعلمون» مرفوعة بماذا؟","options":["الضمة","الواو","الألف","الياء"],"answer":1,"explanation":"جمع المذكر السالم يرفع بالواو."},
+    {"id":"english-01","subject":"اللغة الإنجليزية","type":"multiple","question":"Choose the correct plural of “child”.","options":["childs","childes","children","childrens"],"answer":2,"explanation":"The plural form of child is children."},
+    {"id":"skills-01","subject":"المهارات العامة","type":"connect","question":"اختر الوحدة المناسبة لكل كمية: السرعة تقاس بـ؟","options":["متر/ثانية","كيلوجرام","درجة مئوية","لتر"],"answer":0,"explanation":"وحدة السرعة القياسية هي متر لكل ثانية."}
+  ]
+}

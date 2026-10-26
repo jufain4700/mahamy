@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#102a31">
+  <meta name="description" content="عالم مهامي، مغامرة بناء واستكشاف وتحديات تعليمية.">
+  <title>عالم مهامي | مغامرة المكعبات</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="game.css">
+  <script type="importmap">
+    {"imports":{"three":"https://unpkg.com/three@0.169.0/build/three.module.js"}}
+  </script>
+  <script src="../config.js"></script>
+  <script type="module" src="main.js"></script>
+</head>
+<body>
+  <main id="gameRoot">
+    <canvas id="worldCanvas" aria-label="عالم مهامي ثلاثي الأبعاد"></canvas>
+    <div class="world-vignette" aria-hidden="true"></div>
+
+    <section class="screen-menu" id="startScreen" aria-labelledby="gameTitle">
+      <div class="menu-card">
+        <div class="game-emblem" aria-hidden="true">◆</div>
+        <p class="menu-kicker">مغامرتك تبدأ من هنا</p>
+        <h1 id="gameTitle">عالم <span>مهامي</span></h1>
+        <p class="menu-lead">استكشف، ابنِ، واكتشف المعرفة مكعبًا بعد مكعب.</p>
+        <div class="menu-actions">
+          <button class="primary-button" id="startButton" type="button">ابدأ المغامرة</button>
+          <button class="secondary-button" id="continueButton" type="button">متابعة اللعب</button>
+          <button class="secondary-button" id="howButton" type="button">طريقة اللعب</button>
+          <button class="secondary-button" id="settingsButton" type="button">الإعدادات</button>
+          <a class="secondary-button link-button" href="../">العودة إلى مهامي</a>
+        </div>
+        <p class="menu-footnote">تقدمك ومكافآتك محفوظة على هذا الجهاز فقط.</p>
+      </div>
+      <div class="menu-attribution">عالم مستقل من مهامي • تعلّم واستمتع</div>
+    </section>
+
+    <section class="hud hidden" id="hud" aria-label="معلومات اللعبة">
+      <header class="hud-top">
+        <div class="player-chip"><span class="avatar-dot">م</span><div><strong>مستكشف مهامي</strong><small id="levelLabel">مبتدئ</small></div></div>
+        <div class="xp-chip"><div class="xp-copy"><span>الخبرة</span><strong id="xpLabel" dir="ltr">0 / 100 XP</strong></div><span class="xp-track"><i id="xpFill"></i></span></div>
+        <button class="hud-pill" id="coinsButton" type="button" aria-label="العملات"><span>✦</span><b id="coinsLabel">٠</b></button>
+        <div class="hud-pill star-pill" aria-label="نجوم الإنجاز"><span>⭐</span><b id="starsLabel">٠</b></div>
+        <button class="hud-icon" id="studyButton" type="button" aria-label="مهامي الدراسية" title="مهامي الدراسية">▤</button>
+        <button class="hud-icon" id="pauseButton" type="button" aria-label="إيقاف مؤقت" title="إيقاف مؤقت">Ⅱ</button>
+      </header>
+      <div class="crosshair" aria-hidden="true"><span></span></div>
+      <div class="interaction-hint" id="interactionHint">WASD للحركة • انقر لبدء التحكم بالماوس</div>
+      <div class="compass"><span>N</span><i></i><small id="coordinates" dir="ltr">0, 0</small></div>
+      <div class="target-label hidden" id="targetLabel"></div>
+      <div class="hotbar" id="hotbar" aria-label="شريط الأدوات"></div>
+      <div class="desktop-tip">WASD حركة • Space قفز • Shift جري • زر أيسر كسر • زر أيمن بناء • E تفاعل • I الحقيبة • Esc إيقاف</div>
+      <div class="mobile-controls" id="mobileControls">
+        <div class="joystick" id="joystick"><div id="joystickKnob"></div></div>
+        <div class="mobile-action-set">
+          <button type="button" data-action="jump" aria-label="قفز">↑</button>
+          <button type="button" data-action="interact" aria-label="تفاعل">E</button>
+          <button type="button" data-action="break" aria-label="كسر">✦</button>
+          <button type="button" data-action="place" aria-label="بناء">＋</button>
+        </div>
+      </div>
+    </section>
+
+    <div class="modal-layer hidden" id="modalLayer" role="presentation">
+      <section class="modal-card" id="modalCard" role="dialog" aria-modal="true" aria-labelledby="modalTitle"></section>
+    </div>
+    <div class="toast-stack" id="toastStack" aria-live="polite"></div>
+  </main>
+</body>
+</html>

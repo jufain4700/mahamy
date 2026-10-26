@@ -1,0 +1,9 @@
+{
+  "quests": [
+    {"id":"gather-wood","title":"جامع الأخشاب","description":"اجمع ١٠ قطع خشب من الأشجار.","kind":"collect","resource":"wood","target":10,"xp":35,"coins":12},
+    {"id":"builder-home","title":"بيت على ذوقك","description":"ابنِ ١٢ مكعبًا في عالمك.","kind":"build","target":12,"xp":50,"coins":18},
+    {"id":"quiz-five","title":"متعلم فضولي","description":"أجب إجابة صحيحة عن ٥ أسئلة.","kind":"answers","target":5,"xp":60,"coins":20},
+    {"id":"treasure-hunt","title":"أثر الكنز","description":"اعثر على صندوق الكنز قرب الساحل الشرقي.","kind":"chest","target":1,"xp":45,"coins":15},
+    {"id":"academy","title":"جولة الأكاديمية","description":"أكمل تحديًا تعليميًا واحدًا.","kind":"challenge","target":1,"xp":45,"coins":15}
+  ]
+}

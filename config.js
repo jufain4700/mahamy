@@ -1,6 +1,6 @@
 /* إعدادات عامة: ضع رابط Web App المنشور في apiUrl، واتركه فارغًا لوضع Demo. */
 window.MAHAMI_CONFIG = {
-  apiUrl: "",
+  apiUrl: "https://script.google.com/macros/s/AKfycbxFIw9hd7UpCOTWUw-ApNohoKdeyu5u1ed5xVKkZQ-BAITEo044Mts8Z-Vs1wkeMmWzgg/exec",
   refreshIntervalMs: 60000,
   demoEnabled: true,
   timezone: "Asia/Riyadh",
